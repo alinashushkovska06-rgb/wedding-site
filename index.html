@@ -4,72 +4,103 @@
 <meta charset="UTF-8">
 <title>Олександр & Аліна</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+
 <style>
 body {
   margin: 0;
-  font-family: 'Georgia', serif;
-  scroll-behavior: smooth;
+  font-family: 'Montserrat', sans-serif;
   background: #f5efe6;
   color: #333;
 }
 
-/* ГОЛОВНИЙ ЕКРАН */
+/* HERO */
 .hero {
   height: 100vh;
   background: 
     linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
-    url('https://i.ibb.co/s94Vw1fw/IMG-8216.jpg') no-repeat center/cover;
+    url('https://i.ibb.co/s94Vw1fw/IMG-8216.jpg') center/cover;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
   color: white;
+  text-align: center;
 }
 
 .hero h1 {
-  font-size: 50px;
-}
-
-.scroll {
-  position: absolute;
-  bottom: 20px;
+  font-family: 'Playfair Display', serif;
+  font-size: 52px;
 }
 
 /* СЕКЦІЇ */
 .section {
-  padding: 70px 20px;
+  padding: 80px 20px;
   text-align: center;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s ease;
+}
+
+.section.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .light { background: #f5efe6; }
-.dark { background: #eae3d8; }
+.dark { background: #ebe3d7; }
 
-h2 { font-size: 28px; }
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+}
+
+p {
+  font-size: 18px;
+}
+
+/* ГІЛОЧКА */
+.divider {
+  text-align: center;
+  font-size: 28px;
+  margin: 20px 0;
+  color: #555;
+}
 
 /* КАЛЕНДАР */
 .calendar {
-  display: inline-block;
-  border: 2px solid #d6cfc2;
-  padding: 20px;
-  border-radius: 15px;
+  max-width: 300px;
+  margin: auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
 }
 
 .day {
-  display: inline-block;
-  width: 40px;
-  margin: 5px;
+  padding: 10px;
 }
 
 .highlight {
   border: 2px solid #c0392b;
   border-radius: 50%;
-  padding: 5px;
 }
 
 /* ТАЙМЕР */
 .timer {
-  font-size: 24px;
   margin-top: 20px;
+  font-size: 20px;
+}
+
+/* КНОПКИ */
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  background: black;
+  color: white;
+  border-radius: 20px;
+  text-decoration: none;
 }
 
 /* ДРЕС-КОД */
@@ -80,125 +111,90 @@ h2 { font-size: 28px; }
   border-radius: 50%;
   margin: 5px;
 }
-
-/* КНОПКА */
-.button {
-  display: inline-block;
-  padding: 10px 20px;
-  background: black;
-  color: white;
-  border-radius: 20px;
-  text-decoration: none;
-  margin-top: 10px;
-}
 </style>
 </head>
 
 <body>
 
-<!-- МУЗИКА -->
 <audio autoplay loop>
-  <source src="music.mp3" type="audio/mpeg">
+  <source src="music.mp3">
 </audio>
 
-<!-- ГОЛОВНИЙ ЕКРАН -->
 <div class="hero">
   <div>
     <h1>Олександр & Аліна 💍</h1>
-    <p>↓ гортай вниз ↓</p>
   </div>
 </div>
 
-<!-- ЗАПРОШЕННЯ -->
+<div class="divider">❦</div>
+
 <div class="section light">
-  <p>
-  Кохання зробило нас одним цілим…<br>
-  І тепер ми робимо наступний крок разом 💍<br><br>
-  Ми запрошуємо вас розділити з нами день,<br>
-  який назавжди залишиться у наших серцях
-  </p>
+<p>
+Кохання зробило нас одним цілим…<br>
+І тепер ми робимо наступний крок разом 💍<br><br>
+Ми запрошуємо вас розділити з нами день,<br>
+який назавжди залишиться у наших серцях
+</p>
 </div>
 
-<!-- КАЛЕНДАР -->
+<div class="divider">❦</div>
+
 <div class="section dark">
-  <h2>📅 Дата</h2>
-  <div class="calendar">
-    <div>
-      <span class="day">23</span>
-      <span class="day highlight">24</span>
-      <span class="day">25</span>
-    </div>
-    <p>Липень 2026</p>
-  </div>
+<h2>📅 Липень 2026</h2>
 
-  <div class="timer" id="timer"></div>
+<div class="calendar">
+<div class="grid">
+<span class="day">1</span><span class="day">2</span><span class="day">3</span>
+<span class="day">4</span><span class="day">5</span><span class="day">6</span>
+<span class="day">7</span><span class="day">8</span><span class="day">9</span>
+<span class="day">10</span><span class="day">11</span><span class="day">12</span>
+<span class="day">13</span><span class="day">14</span><span class="day">15</span>
+<span class="day">16</span><span class="day">17</span><span class="day">18</span>
+<span class="day">19</span><span class="day">20</span><span class="day">21</span>
+<span class="day">22</span><span class="day">23</span>
+<span class="day highlight">24</span>
+<span class="day">25</span><span class="day">26</span>
+<span class="day">27</span><span class="day">28</span>
+<span class="day">29</span><span class="day">30</span>
+<span class="day">31</span>
+</div>
 </div>
 
-<!-- ТАЙМІНГ -->
+<div class="timer" id="timer"></div>
+</div>
+
+<div class="divider">❦</div>
+
 <div class="section light">
-  <h2>📅 Таймінг</h2>
-  <p>
-  12:45 — Вінчання ⛪<br>
-  14:00 — Святкування 🍾
-  </p>
+<h2>📅 Таймінг</h2>
+<p>
+12:45 — Вінчання ⛪<br>
+14:00 — Святкування 🍾
+</p>
 </div>
 
-<!-- ВІНЧАННЯ -->
+<div class="divider">❦</div>
+
 <div class="section dark">
-  <h2>⛪ Вінчання</h2>
-  <p>Свято-Покровський Катедральний Собор ПЦУ</p>
-  <a href="https://maps.app.goo.gl/fWoXVqmHrk8cKWAA8?g_st=ic" class="button">Відкрити карту</a>
+<h2>⛪ Вінчання</h2>
+<p>Свято-Покровський Катедральний Собор ПЦУ</p>
+<a href="https://maps.app.goo.gl/fWoXVqmHrk8cKWAA8?g_st=ic" class="button">Відкрити карту</a>
 </div>
 
-<!-- РЕСТОРАН -->
+<div class="divider">❦</div>
+
 <div class="section light">
-  <h2>🍾 Ресторан</h2>
-  <p>Айвенго, м. Рівне</p>
-  <a href="https://maps.app.goo.gl/Ke7kAkdDynt7aTix9?g_st=ic" class="button">Відкрити карту</a>
+<h2>🍾 Ресторан</h2>
+<p>Айвенго, м. Рівне</p>
+<a href="https://maps.app.goo.gl/Ke7kAkdDynt7aTix9?g_st=ic" class="button">Відкрити карту</a>
 </div>
 
-<!-- ДРЕС-КОД -->
+<div class="divider">❦</div>
+
 <div class="section dark">
-  <h2>🎨 Дрес-код</h2>
-  <div class="colors">
-    <span style="background:black;"></span>
-    <span style="background:white; border:1px solid #ccc;"></span>
-    <span style="background:beige;"></span>
-    <span style="background:brown;"></span>
-    <span style="background:gray;"></span>
-  </div>
-</div>
-
-<!-- АЛКОГОЛЬ -->
-<div class="section light">
-  <h2>🍷 Ваш вибір</h2>
-  <p>Що ви будете пити?</p>
-  <select>
-    <option>Вино</option>
-    <option>Шампанське</option>
-    <option>Віскі</option>
-    <option>Коктейлі</option>
-    <option>Не вживаю</option>
-  </select>
-</div>
-
-<script>
-const weddingDate = new Date("2026-07-24T00:00:00").getTime();
-
-const timer = setInterval(function() {
-  const now = new Date().getTime();
-  const distance = weddingDate - now;
-
-  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
-  const minutes = Math.floor((distance / 1000 / 60) % 60);
-
-  document.getElementById("timer").innerHTML =
-    "До весілля залишилось: " +
-    days + " днів " + hours + " год " + minutes + " хв";
-
-}, 1000);
-</script>
-
-</body>
-</html>
+<h2>🎨 Дрес-код</h2>
+<div class="colors">
+<span style="background:black;"></span>
+<span style="background:white;border:1px solid #ccc;"></span>
+<span style="background:beige;"></span>
+<span style="background:brown;"></span>
