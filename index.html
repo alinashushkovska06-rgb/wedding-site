@@ -8,76 +8,98 @@
 body {
   margin: 0;
   font-family: 'Georgia', serif;
+  scroll-behavior: smooth;
+}
+
+/* ГОЛОВНИЙ ЕКРАН */
+.hero {
+  height: 100vh;
+  background: url('https://i.imgur.com/8Km9tLL.jpg') no-repeat center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
   text-align: center;
-  background: linear-gradient(to bottom, #fff5f7, #ffffff);
-  color: #333;
 }
 
-.container {
-  padding: 50px 20px;
-}
-
-h1 {
-  font-size: 42px;
+.hero h1 {
+  font-size: 48px;
   margin-bottom: 10px;
 }
 
-.date {
-  font-size: 20px;
-  margin-bottom: 30px;
+.scroll {
+  position: absolute;
+  bottom: 20px;
+  font-size: 18px;
 }
 
-.block {
-  margin: 40px 0;
+/* СЕКЦІЇ */
+.section {
+  padding: 70px 20px;
+  text-align: center;
 }
 
-.button {
-  display: inline-block;
-  padding: 12px 25px;
-  background: #d4af37;
-  color: white;
-  text-decoration: none;
-  border-radius: 20px;
-  margin-top: 20px;
+.light {
+  background: #ffffff;
 }
 
+.dark {
+  background: #f8f5f0;
+}
+
+h2 {
+  font-size: 28px;
+}
+
+p {
+  font-size: 18px;
+  line-height: 1.6;
+}
 </style>
 </head>
 
 <body>
 
-<div class="container">
-
-<h1>Олександр & Аліна 💍</h1>
-<div class="date">24 липня 2026</div>
-
-<p>Ми щасливі запросити вас на найважливіший день у нашому житті ❤️</p>
-
-<div class="block">
-<h2>📍 Локація</h2>
-<p>Тут напишеш адресу</p>
+<!-- ПЕРШИЙ ЕКРАН -->
+<div class="hero">
+  <div>
+    <h1>Олександр & Аліна 💍</h1>
+    <p>24 липня 2026</p>
+    <div class="scroll">↓ гортай вниз ↓</div>
+  </div>
 </div>
 
-<div class="block">
-<h2>📅 Програма</h2>
-<p>15:00 — Церемонія<br>
-17:00 — Святкування</p>
+<!-- ФРАЗА -->
+<div class="section light">
+  <h2>💖</h2>
+  <p>Кохання — це коли двоє знаходять одне одного серед тисяч</p>
 </div>
 
-<div class="block">
-<h2>🎶 Наша пісня</h2>
-
-<audio controls autoplay loop>
-  <source src="music.mp3" type="audio/mpeg">
-</audio>
-
+<!-- ТАЙМІНГ -->
+<div class="section dark">
+  <h2>📅 Таймінг</h2>
+  <p>
+  12:45 — Вінчання ⛪<br>
+  14:00 — Святкування в Айвенго 🍾
+  </p>
 </div>
 
-<div class="block">
-<h2>💌 Підтвердження</h2>
-<p>Напишіть нам, чи зможете бути ❤️</p>
+<!-- ЛОКАЦІЯ РЕСТОРАН -->
+<div class="section light">
+  <h2>📍 Ресторан</h2>
+  <p>Айвенго</p>
 </div>
 
+<!-- ЛОКАЦІЯ ВІНЧАННЯ -->
+<div class="section dark">
+  <h2>⛪ Вінчання</h2>
+  <p>Тут впишеш церкву</p>
+</div>
+
+<!-- ФІНАЛ -->
+<div class="section light">
+  <h2>💌</h2>
+  <p>Будемо щасливі розділити цей день з вами ❤️</p>
 </div>
 
 </body>
