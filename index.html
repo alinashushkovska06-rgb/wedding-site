@@ -35,22 +35,43 @@ body {
   margin-top: 10px;
 }
 
+/* PLAYER */
 .player {
-  margin-top: 20px;
-  padding: 10px 20px;
+  margin-top: 25px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-family: 'Cormorant SC', serif;
+}
+
+.play-btn {
+  width: 50px;
+  height: 50px;
   border: 1px solid #3e2f25;
-  border-radius: 30px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
 }
 
-/* SECTION */
+/* SECTION ANIMATION */
 .section {
-  padding: 60px 20px;
+  padding: 70px 20px;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s ease;
+}
+
+.section.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .title {
   font-family: 'Antic Didone', serif;
   font-size: 42px;
+  margin-bottom: 25px;
 }
 
 .text {
@@ -58,6 +79,7 @@ body {
   font-size: 20px;
   max-width: 600px;
   margin: auto;
+  line-height: 1.6;
 }
 
 /* CALENDAR */
@@ -78,12 +100,20 @@ body {
 .timing {
   font-size: 24px;
   font-family: 'Cormorant SC', serif;
+  line-height: 2;
+  margin-top: 20px;
+}
+
+/* LOCATION TEXT */
+.location-text {
+  font-size: 22px;
+  margin-top: 10px;
 }
 
 /* BUTTON */
 .button {
   display: inline-block;
-  margin-top: 10px;
+  margin-top: 15px;
   padding: 10px 20px;
   border: 1px solid #3e2f25;
   border-radius: 20px;
@@ -91,11 +121,27 @@ body {
   color: #3e2f25;
 }
 
-/* DRESS CODE */
+/* DRESS CODE SCROLL */
+.colors-wrapper {
+  position: relative;
+  overflow: hidden;
+  margin-top: 25px;
+}
+
 .colors {
   display: flex;
-  justify-content: center;
   gap: 15px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 10px;
+}
+
+.colors::-webkit-scrollbar {
+  display: none;
+}
+
+.color {
+  min-width: 120px;
 }
 
 .color img {
@@ -109,11 +155,24 @@ body {
   font-family: 'Cormorant SC', serif;
 }
 
-/* FINAL PHOTO + TIMER */
+/* arrows */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.arrow.left { left: 0; }
+.arrow.right { right: 0; }
+
+/* FINAL PHOTO */
 .final {
-  height: 100vh;
+  height: 80vh;
   background: url('proposal.jpg') center/cover no-repeat;
   position: relative;
+  filter: blur(1px);
 }
 
 .overlay {
@@ -124,7 +183,8 @@ body {
 
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
+  padding-bottom: 80px;
 }
 
 #timer {
@@ -142,7 +202,11 @@ body {
   <div class="initials">O | A</div>
   <div class="names">Олександр &nbsp;&nbsp; Аліна</div>
 
-  <div class="player" onclick="playMusic()">▶ Увімкнути музику</div>
+  <div class="player">
+    <div class="play-btn" onclick="playMusic()">▶</div>
+    <div id="musicText">Увімкнути музику</div>
+  </div>
+
   <audio id="music" src="music.mp3"></audio>
 </div>
 
@@ -173,48 +237,40 @@ body {
 <div class="section">
   <div class="title">Таймінг</div>
   <div class="timing">
-    12:45 — Вінчання<br>
+    12:45 — Вінчання<br><br>
     14:00 — Святкування
   </div>
 </div>
 
-<!-- LOCATION -->
+<!-- LOCATIONS -->
 <div class="section">
   <div class="title">Вінчання</div>
-  <p>Свято-Покровський Катедральний Собор ПЦУ</p>
+  <p class="location-text">Свято-Покровський Катедральний Собор ПЦУ</p>
   <a href="https://maps.app.goo.gl/fWoXVqmHrk8cKWAA8?g_st=ic" target="_blank" class="button">Локація</a>
 </div>
 
 <div class="section">
   <div class="title">Святкування</div>
-  <p>Ресторан Айвенго, м. Рівне</p>
+  <p class="location-text">Ресторан Айвенго, м. Рівне</p>
   <a href="https://maps.app.goo.gl/Ke7kAkdDynt7aTix9?g_st=ic" target="_blank" class="button">Локація</a>
 </div>
 
 <!-- DRESS CODE -->
 <div class="section">
   <div class="title">Dress Code</div>
-  <div class="colors">
-    <div class="color">
-      <img src="brown.jpg">
-      <p>Шоколад</p>
+
+  <div class="colors-wrapper">
+    <div class="arrow left" onclick="scrollColors(-200)">←</div>
+
+    <div class="colors" id="colors">
+      <div class="color"><img src="black.jpg"><p>Чорний</p></div>
+      <div class="color"><img src="brown.jpg"><p>Шоколад</p></div>
+      <div class="color"><img src="gray.jpg"><p>Графіт</p></div>
+      <div class="color"><img src="milk.jpg"><p>Молочний</p></div>
+      <div class="color"><img src="beige.jpg"><p>Бежевий</p></div>
     </div>
-    <div class="color">
-      <img src="black.jpg">
-      <p>Чорний</p>
-    </div>
-    <div class="color">
-      <img src="gray.jpg">
-      <p>Графіт</p>
-    </div>
-    <div class="color">
-      <img src="milk.jpg">
-      <p>Молочний</p>
-    </div>
-    <div class="color">
-      <img src="beige.jpg">
-      <p>Бежевий</p>
-    </div>
+
+    <div class="arrow right" onclick="scrollColors(200)">→</div>
   </div>
 </div>
 
@@ -227,7 +283,9 @@ body {
 
 <script>
 function playMusic() {
-  document.getElementById("music").play();
+  const music = document.getElementById("music");
+  music.play();
+  document.getElementById("musicText").innerText = "Музика грає 🎶";
 }
 
 const weddingDate = new Date("2026-07-24T00:00:00");
@@ -244,8 +302,23 @@ function updateTimer() {
     days + " днів " + hours + " год " + minutes + " хв";
 }
 
-updateTimer();
 setInterval(updateTimer, 1000);
+updateTimer();
+
+function scrollColors(value) {
+  document.getElementById("colors").scrollLeft += value;
+}
+
+const sections = document.querySelectorAll('.section');
+
+window.addEventListener('scroll', () => {
+  sections.forEach(sec => {
+    const top = sec.getBoundingClientRect().top;
+    if(top < window.innerHeight - 100) {
+      sec.classList.add('show');
+    }
+  });
+});
 </script>
 
 </body>
