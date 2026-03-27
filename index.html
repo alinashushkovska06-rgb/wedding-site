@@ -14,6 +14,19 @@ body {
   background: #f5efe6;
   color: #3e2f25;
   text-align: center;
+  overflow-x: hidden;
+}
+
+/* ЛЕГКИЙ ВІЗЕРУНОК */
+body::before {
+  content: "";
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle at 20% 20%, rgba(0,0,0,0.05) 0, transparent 60%),
+                    radial-gradient(circle at 80% 30%, rgba(0,0,0,0.04) 0, transparent 60%),
+                    radial-gradient(circle at 30% 80%, rgba(0,0,0,0.05) 0, transparent 60%);
+  z-index: 0;
 }
 
 /* HERO */
@@ -24,6 +37,8 @@ body {
   justify-content: center;
   align-items: center;
   font-family: 'Forum', serif;
+  position: relative;
+  z-index: 1;
 }
 
 .initials {
@@ -45,9 +60,9 @@ body {
 }
 
 .play-btn {
-  width: 50px;
-  height: 50px;
-  border: 1px solid #3e2f25;
+  width: 55px;
+  height: 55px;
+  border: 2px solid #3e2f25;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -55,12 +70,14 @@ body {
   cursor: pointer;
 }
 
-/* SECTION ANIMATION */
+/* СЕКЦІЇ */
 .section {
-  padding: 70px 20px;
+  padding: 80px 20px;
   opacity: 0;
-  transform: translateY(40px);
-  transition: all 1s ease;
+  transform: translateY(60px);
+  transition: all 1.6s ease;
+  position: relative;
+  z-index: 1;
 }
 
 .section.show {
@@ -79,10 +96,10 @@ body {
   font-size: 20px;
   max-width: 600px;
   margin: auto;
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
-/* CALENDAR */
+/* КАЛЕНДАР */
 .calendar {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -96,21 +113,20 @@ body {
   border-radius: 50%;
 }
 
-/* TIMING */
+/* ТАЙМІНГ */
 .timing {
   font-size: 24px;
-  font-family: 'Cormorant SC', serif;
-  line-height: 2;
+  line-height: 2.2;
   margin-top: 20px;
 }
 
-/* LOCATION TEXT */
+/* ЛОКАЦІЯ */
 .location-text {
   font-size: 22px;
   margin-top: 10px;
 }
 
-/* BUTTON */
+/* КНОПКА */
 .button {
   display: inline-block;
   margin-top: 15px;
@@ -121,32 +137,27 @@ body {
   color: #3e2f25;
 }
 
-/* DRESS CODE SCROLL */
+/* DRESS CODE */
 .colors-wrapper {
   position: relative;
-  overflow: hidden;
-  margin-top: 25px;
+  margin-top: 30px;
 }
 
 .colors {
   display: flex;
-  gap: 15px;
   overflow-x: auto;
-  scroll-behavior: smooth;
+  gap: 15px;
   padding: 10px;
+  scroll-behavior: smooth;
 }
 
 .colors::-webkit-scrollbar {
   display: none;
 }
 
-.color {
-  min-width: 120px;
-}
-
 .color img {
-  width: 120px;
-  height: 160px;
+  width: 110px;
+  height: 140px;
   object-fit: cover;
   border-radius: 12px;
 }
@@ -155,49 +166,71 @@ body {
   font-family: 'Cormorant SC', serif;
 }
 
-/* arrows */
+/* СТРІЛКИ */
 .arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 24px;
+  font-size: 40px;
+  font-weight: bold;
   cursor: pointer;
+  color: #3e2f25;
+  z-index: 2;
 }
 
-.arrow.left { left: 0; }
-.arrow.right { right: 0; }
+.arrow.left { left: 5px; }
+.arrow.right { right: 5px; }
 
-/* FINAL PHOTO */
+/* ФІНАЛЬНЕ ФОТО */
 .final {
-  height: 80vh;
-  background: url('proposal.jpg') center/cover no-repeat;
+  height: 70vh;
   position: relative;
-  filter: blur(1px);
 }
 
-.overlay {
+.final::before {
+  content: "";
   position: absolute;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.3);
+  background: url('proposal.jpg') center/cover no-repeat;
+  filter: blur(2px);
+  z-index: 0;
+}
 
+.overlay {
+  position: relative;
+  z-index: 1;
+  height: 100%;
   display: flex;
-  justify-content: center;
   align-items: flex-end;
-  padding-bottom: 80px;
+  justify-content: center;
+  padding-bottom: 60px;
 }
 
 #timer {
   color: white;
-  font-size: 60px;
+  font-size: 50px;
+  white-space: nowrap;
+}
+
+/* ТЕКСТ ПІСЛЯ ФОТО */
+.footer-text {
   font-family: 'Antic Didone', serif;
+  font-size: 32px;
+  margin: 40px 20px;
+}
+
+/* АДАПТИВ */
+@media (max-width: 600px) {
+  #timer {
+    font-size: 32px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- HERO -->
 <div class="hero">
   <div class="initials">O | A</div>
   <div class="names">Олександр &nbsp;&nbsp; Аліна</div>
@@ -210,30 +243,21 @@ body {
   <audio id="music" src="music.mp3"></audio>
 </div>
 
-<!-- TEXT -->
 <div class="section">
-  <div class="title">Дорогі наші гості</div>
+<div class="title">Дорогі наші гості</div>
   <div class="text">
     Кохання зробило нас одним цілим…<br><br>
-    І тепер ми робимо наступний крок разом 💍<br><br>
-    Ми запрошуємо вас розділити з нами день,<br>
-    який назавжди залишиться у наших серцях
+    Ми запрошуємо вас розділити цей день з нами 💍
   </div>
 </div>
 
-<!-- CALENDAR -->
 <div class="section">
   <div class="title">24 липня 2026</div>
   <div class="calendar">
-    <div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div>
-    <div>8</div><div>9</div><div>10</div><div>11</div><div>12</div><div>13</div><div>14</div>
-    <div>15</div><div>16</div><div>17</div><div>18</div><div>19</div><div>20</div><div>21</div>
-    <div>22</div><div>23</div><div class="highlight">24</div><div>25</div><div>26</div><div>27</div><div>28</div>
-    <div>29</div><div>30</div><div>31</div>
+    <div>1</div> ... <div class="highlight">24</div> ... <div>31</div>
   </div>
 </div>
 
-<!-- TIMING -->
 <div class="section">
   <div class="title">Таймінг</div>
   <div class="timing">
@@ -242,43 +266,44 @@ body {
   </div>
 </div>
 
-<!-- LOCATIONS -->
 <div class="section">
   <div class="title">Вінчання</div>
   <p class="location-text">Свято-Покровський Катедральний Собор ПЦУ</p>
-  <a href="https://maps.app.goo.gl/fWoXVqmHrk8cKWAA8?g_st=ic" target="_blank" class="button">Локація</a>
+  <a href="https://maps.app.goo.gl/fWoXVqmHrk8cKWAA8?g_st=ic" class="button">Локація</a>
 </div>
 
 <div class="section">
   <div class="title">Святкування</div>
-  <p class="location-text">Ресторан Айвенго, м. Рівне</p>
-  <a href="https://maps.app.goo.gl/Ke7kAkdDynt7aTix9?g_st=ic" target="_blank" class="button">Локація</a>
+  <p class="location-text">Айвенго, м. Рівне</p>
+  <a href="https://maps.app.goo.gl/Ke7kAkdDynt7aTix9?g_st=ic" class="button">Локація</a>
 </div>
 
-<!-- DRESS CODE -->
 <div class="section">
   <div class="title">Dress Code</div>
 
   <div class="colors-wrapper">
-    <div class="arrow left" onclick="scrollColors(-200)">←</div>
+    <div class="arrow left" onclick="scrollColors(-200)">‹</div>
 
     <div class="colors" id="colors">
       <div class="color"><img src="black.jpg"><p>Чорний</p></div>
       <div class="color"><img src="brown.jpg"><p>Шоколад</p></div>
       <div class="color"><img src="gray.jpg"><p>Графіт</p></div>
-      <div class="color"><img src="milk.jpg"><p>Молочний</p></div>
+      <div class="color"><img src="milk.jpg"><p>Білий</p></div>
       <div class="color"><img src="beige.jpg"><p>Бежевий</p></div>
     </div>
 
-    <div class="arrow right" onclick="scrollColors(200)">→</div>
+    <div class="arrow right" onclick="scrollColors(200)">›</div>
   </div>
 </div>
 
-<!-- FINAL -->
 <div class="final">
   <div class="overlay">
     <div id="timer"></div>
   </div>
+</div>
+
+<div class="footer-text">
+  Чекаємо на вас з нетерпінням 🤍
 </div>
 
 <script>
@@ -294,27 +319,25 @@ function updateTimer() {
   const now = new Date();
   const diff = weddingDate - now;
 
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-  const minutes = Math.floor((diff / (1000 * 60)) % 60);
+  const days = Math.floor(diff / (1000*60*60*24));
+  const hours = Math.floor((diff/(1000*60*60))%24);
+  const minutes = Math.floor((diff/(1000*60))%60);
 
   document.getElementById("timer").innerHTML =
-    days + " днів " + hours + " год " + minutes + " хв";
+    ${days} днів ${hours} год ${minutes} хв;
 }
 
 setInterval(updateTimer, 1000);
 updateTimer();
 
-function scrollColors(value) {
-  document.getElementById("colors").scrollLeft += value;
+function scrollColors(val){
+  document.getElementById("colors").scrollLeft += val;
 }
 
 const sections = document.querySelectorAll('.section');
-
 window.addEventListener('scroll', () => {
   sections.forEach(sec => {
-    const top = sec.getBoundingClientRect().top;
-    if(top < window.innerHeight - 100) {
+    if(sec.getBoundingClientRect().top < window.innerHeight - 100){
       sec.classList.add('show');
     }
   });
