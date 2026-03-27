@@ -2,82 +2,74 @@
 <html lang="uk">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Олександр & Аліна</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Forum&family=Antic+Didone&family=Cormorant+SC:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Forum&family=Antic+Didone&family=Cormorant+SC:wght@500&display=swap" rel="stylesheet">
 
 <style>
+
 body {
   margin: 0;
   background: #f5efe6;
-  color: #3e2f25;
-  text-align: center;
+  color: #3e2c23;
+  font-family: 'Cormorant SC', serif;
   overflow-x: hidden;
 }
 
-/* ЛЕГКИЙ ВІЗЕРУНОК */
+/* ФОН КВІТИ */
 body::before {
   content: "";
   position: fixed;
   width: 100%;
   height: 100%;
-  background-image: radial-gradient(circle at 20% 20%, rgba(0,0,0,0.05) 0, transparent 60%),
-                    radial-gradient(circle at 80% 30%, rgba(0,0,0,0.04) 0, transparent 60%),
-                    radial-gradient(circle at 30% 80%, rgba(0,0,0,0.05) 0, transparent 60%);
-  z-index: 0;
+  background: url('flowers.png') center/cover no-repeat;
+  opacity: 0.08;
+  z-index: -1;
 }
 
 /* HERO */
 .hero {
   height: 100vh;
+  background: url('https://i.ibb.co/s94Vw1fw/IMG-8216.jpg') center/cover;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-  font-family: 'Forum', serif;
+  justify-content: center;
+  text-align: center;
   position: relative;
-  z-index: 1;
 }
 
-.initials {
-  font-size: 90px;
+.hero::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.3);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  color: white;
 }
 
 .names {
-  font-size: 20px;
-  margin-top: 10px;
+  font-family: 'Forum', serif;
+  font-size: 60px;
 }
 
-/* PLAYER */
 .player {
-  margin-top: 25px;
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  font-family: 'Cormorant SC', serif;
-}
-
-.play-btn {
-  width: 55px;
-  height: 55px;
-  border: 2px solid #3e2f25;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin-top: 20px;
   cursor: pointer;
+  font-size: 18px;
 }
 
 /* СЕКЦІЇ */
 .section {
   padding: 80px 20px;
+  text-align: center;
   opacity: 0;
-  transform: translateY(60px);
-  transition: all 1.6s ease;
-  position: relative;
-  z-index: 1;
+  transform: translateY(50px);
+  transition: 1.2s;
 }
 
 .section.show {
@@ -85,27 +77,28 @@ body::before {
   transform: translateY(0);
 }
 
-.title {
+h2 {
   font-family: 'Antic Didone', serif;
   font-size: 42px;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
 }
 
-.text {
-  font-family: 'Cormorant SC', serif;
-  font-size: 20px;
-  max-width: 600px;
-  margin: auto;
-  line-height: 1.7;
+p {
+  font-size: 22px;
+  line-height: 1.6;
 }
 
 /* КАЛЕНДАР */
 .calendar {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  max-width: 400px;
+  max-width: 320px;
   margin: auto;
   gap: 10px;
+}
+
+.day {
+  padding: 10px;
 }
 
 .highlight {
@@ -113,235 +106,199 @@ body::before {
   border-radius: 50%;
 }
 
-/* ТАЙМІНГ */
-.timing {
-  font-size: 24px;
-  line-height: 2.2;
-  margin-top: 20px;
+/* ТАЙМЕР */
+.timer {
+  margin-top: 40px;
+  font-size: 32px;
 }
 
-/* ЛОКАЦІЯ */
-.location-text {
-  font-size: 22px;
-  margin-top: 10px;
+.timer span {
+  font-size: 50px;
+  color: white;
 }
 
-/* КНОПКА */
-.button {
-  display: inline-block;
-  margin-top: 15px;
-  padding: 10px 20px;
-  border: 1px solid #3e2f25;
-  border-radius: 20px;
-  text-decoration: none;
-  color: #3e2f25;
-}
-
-/* DRESS CODE */
-.colors-wrapper {
+/* ТАЙМЕР ФОТО */
+.timer-photo {
+  margin: 60px auto;
+  width: 90%;
+  max-width: 500px;
   position: relative;
-  margin-top: 30px;
 }
 
-.colors {
+.timer-photo img {
+  width: 100%;
+  border-radius: 20px;
+  filter: blur(2px);
+}
+
+.timer-overlay {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/* ДРЕС-КОД */
+.slider {
   display: flex;
   overflow-x: auto;
   gap: 15px;
-  padding: 10px;
-  scroll-behavior: smooth;
+  padding: 20px;
+  scroll-snap-type: x mandatory;
 }
 
-.colors::-webkit-scrollbar {
-  display: none;
+.slide {
+  flex: 0 0 120px;
+  scroll-snap-align: center;
+  text-align: center;
 }
 
-.color img {
-  width: 110px;
-  height: 140px;
+.slide img {
+  width: 100%;
+  height: 120px;
   object-fit: cover;
-  border-radius: 12px;
-}
-
-.color p {
-  font-family: 'Cormorant SC', serif;
+  border-radius: 15px;
 }
 
 /* СТРІЛКИ */
-.arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 40px;
-  font-weight: bold;
-  cursor: pointer;
-  color: #3e2f25;
-  z-index: 2;
+.arrows {
+  font-size: 30px;
+  margin-top: 10px;
 }
 
-.arrow.left { left: 5px; }
-.arrow.right { right: 5px; }
-
-/* ФІНАЛЬНЕ ФОТО */
-.final {
-  height: 70vh;
-  position: relative;
+/* ФІНАЛ */
+.final-text {
+  text-align: center;
+  font-family: 'Antic Didone';
+  font-size: 28px;
+  margin-bottom: 40px;
 }
 
-.final::before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: url('proposal.jpg') center/cover no-repeat;
-  filter: blur(2px);
-  z-index: 0;
-}
-
-.overlay {
-  position: relative;
-  z-index: 1;
-  height: 100%;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  padding-bottom: 60px;
-}
-
-#timer {
-  color: white;
-  font-size: 50px;
-  white-space: nowrap;
-}
-
-/* ТЕКСТ ПІСЛЯ ФОТО */
-.footer-text {
-  font-family: 'Antic Didone', serif;
-  font-size: 32px;
-  margin: 40px 20px;
-}
-
-/* АДАПТИВ */
-@media (max-width: 600px) {
-  #timer {
-    font-size: 32px;
-  }
-}
 </style>
 </head>
 
 <body>
 
+<audio id="music" loop>
+  <source src="music.mp3">
+</audio>
+
+<!-- HERO -->
 <div class="hero">
-  <div class="initials">O | A</div>
-  <div class="names">Олександр &nbsp;&nbsp; Аліна</div>
-
-  <div class="player">
-    <div class="play-btn" onclick="playMusic()">▶</div>
-    <div id="musicText">Увімкнути музику</div>
-  </div>
-
-  <audio id="music" src="music.mp3"></audio>
-</div>
-
-<div class="section">
-<div class="title">Дорогі наші гості</div>
-  <div class="text">
-    Кохання зробило нас одним цілим…<br><br>
-    Ми запрошуємо вас розділити цей день з нами 💍
+  <div class="hero-content">
+    <div class="names">О | А</div>
+    <div>Олександр & Аліна</div>
+    <div class="player" onclick="playMusic()">▶ Увімкнути музику</div>
   </div>
 </div>
 
+<!-- ТЕКСТ -->
 <div class="section">
-  <div class="title">24 липня 2026</div>
-  <div class="calendar">
-    <div>1</div> ... <div class="highlight">24</div> ... <div>31</div>
-  </div>
+<h2>Дорогі наші гості</h2>
+<p>
+Кохання зробило нас одним цілим…<br><br>
+Ми запрошуємо вас розділити цей день разом з нами 💍
+</p>
+</div>
+
+<!-- КАЛЕНДАР -->
+<div class="section">
+<h2>24 липня 2026</h2>
+<div class="calendar">
+<script>
+for(let i=1;i<=31;i++){
+  document.write(`<div class="day ${i==24?'highlight':''}">${i}</div>`)
+}
+</script>
+</div>
+</div>
+
+<!-- ТАЙМІНГ -->
+<div class="section">
+<h2>Таймінг</h2>
+<p>
+12:45 — Вінчання<br><br>
+14:00 — Святкування
+</p>
+</div>
+
+<!-- ЛОКАЦІЇ -->
+<div class="section">
+<h2>Вінчання</h2>
+<p style="font-size:25px;">Свято-Покровський Катедральний Собор ПЦУ</p>
+<a href="https://maps.app.goo.gl/fWoXVqmHrk8cKWAA8?g_st=ic">Відкрити карту</a>
 </div>
 
 <div class="section">
-  <div class="title">Таймінг</div>
-  <div class="timing">
-    12:45 — Вінчання<br><br>
-    14:00 — Святкування
-  </div>
+<h2>Святкування</h2>
+<p style="font-size:25px;">Ресторан Айвенго, м. Рівне</p>
+<a href="https://maps.app.goo.gl/Ke7kAkdDynt7aTix9?g_st=ic">Відкрити карту</a>
 </div>
 
+<!-- ДРЕС-КОД -->
 <div class="section">
-  <div class="title">Вінчання</div>
-  <p class="location-text">Свято-Покровський Катедральний Собор ПЦУ</p>
-  <a href="https://maps.app.goo.gl/fWoXVqmHrk8cKWAA8?g_st=ic" class="button">Локація</a>
+<h2>Дрес-код</h2>
+
+<div class="slider">
+  <div class="slide"><img src="black.jpg"><p>Чорний</p></div>
+  <div class="slide"><img src="white.jpg"><p>Білий</p></div>
+  <div class="slide"><img src="beige.jpg"><p>Бежевий</p></div>
+  <div class="slide"><img src="brown.jpg"><p>Коричневий</p></div>
+  <div class="slide"><img src="gray.jpg"><p>Сірий</p></div>
 </div>
 
-<div class="section">
-  <div class="title">Святкування</div>
-  <p class="location-text">Айвенго, м. Рівне</p>
-  <a href="https://maps.app.goo.gl/Ke7kAkdDynt7aTix9?g_st=ic" class="button">Локація</a>
+<div class="arrows">← гортай →</div>
+
 </div>
 
-<div class="section">
-  <div class="title">Dress Code</div>
-
-  <div class="colors-wrapper">
-    <div class="arrow left" onclick="scrollColors(-200)">‹</div>
-
-    <div class="colors" id="colors">
-      <div class="color"><img src="black.jpg"><p>Чорний</p></div>
-      <div class="color"><img src="brown.jpg"><p>Шоколад</p></div>
-      <div class="color"><img src="gray.jpg"><p>Графіт</p></div>
-      <div class="color"><img src="milk.jpg"><p>Білий</p></div>
-      <div class="color"><img src="beige.jpg"><p>Бежевий</p></div>
-    </div>
-
-    <div class="arrow right" onclick="scrollColors(200)">›</div>
-  </div>
+<!-- ТАЙМЕР + ФОТО -->
+<div class="timer-photo">
+<img src="photo.jpg">
+<div class="timer-overlay">
+<div class="timer" id="timer"></div>
+</div>
 </div>
 
-<div class="final">
-  <div class="overlay">
-    <div id="timer"></div>
-  </div>
-</div>
-
-<div class="footer-text">
-  Чекаємо на вас з нетерпінням 🤍
+<div class="final-text">
+Чекаємо на вас з нетерпінням ❤️
 </div>
 
 <script>
-function playMusic() {
-  const music = document.getElementById("music");
-  music.play();
-  document.getElementById("musicText").innerText = "Музика грає 🎶";
+
+/* МУЗИКА */
+function playMusic(){
+  document.getElementById('music').play();
 }
 
-const weddingDate = new Date("2026-07-24T00:00:00");
-
-function updateTimer() {
+/* ТАЙМЕР */
+function updateTimer(){
+  const wedding = new Date("2026-07-24T00:00:00");
   const now = new Date();
-  const diff = weddingDate - now;
+  const diff = wedding - now;
 
-  const days = Math.floor(diff / (1000*60*60*24));
-  const hours = Math.floor((diff/(1000*60*60))%24);
-  const minutes = Math.floor((diff/(1000*60))%60);
+  const d = Math.floor(diff / (1000*60*60*24));
+  const h = Math.floor((diff / (1000*60*60)) % 24);
+  const m = Math.floor((diff / (1000*60)) % 60);
 
   document.getElementById("timer").innerHTML =
-    ${days} днів ${hours} год ${minutes} хв;
+  `<span>${d}</span> днів ${h} год ${m} хв`;
 }
 
-setInterval(updateTimer, 1000);
-updateTimer();
+setInterval(updateTimer,1000);
 
-function scrollColors(val){
-  document.getElementById("colors").scrollLeft += val;
-}
-
+/* АНІМАЦІЯ */
 const sections = document.querySelectorAll('.section');
+
 window.addEventListener('scroll', () => {
   sections.forEach(sec => {
-    if(sec.getBoundingClientRect().top < window.innerHeight - 100){
+    const top = sec.getBoundingClientRect().top;
+    if(top < window.innerHeight - 100){
       sec.classList.add('show');
     }
   });
 });
+
 </script>
 
 </body>
