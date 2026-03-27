@@ -2,6 +2,8 @@
 <html lang="uk">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Олександр & Аліна</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Forum&family=Antic+Didone&family=Cormorant+SC:wght@500&display=swap" rel="stylesheet">
@@ -13,43 +15,16 @@ body {
   background: #f5efe6;
   color: #3e2c23;
   font-family: 'Cormorant SC', serif;
-  overflow-x: hidden;
-}
-
-/* ФОН КВІТИ */
-body::before {
-  content: "";
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: url('flowers.png') center/cover no-repeat;
-  opacity: 0.08;
-  z-index: -1;
 }
 
 /* HERO */
 .hero {
   height: 100vh;
-  background: url('https://i.ibb.co/s94Vw1fw/IMG-8216.jpg') center/cover;
+  background: #f5efe6;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  position: relative;
-}
-
-.hero::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.3);
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  color: white;
 }
 
 .names {
@@ -59,28 +34,20 @@ body::before {
 
 .player {
   margin-top: 20px;
-  cursor: pointer;
   font-size: 18px;
+  cursor: pointer;
 }
 
 /* СЕКЦІЇ */
 .section {
   padding: 80px 20px;
   text-align: center;
-  opacity: 0;
-  transform: translateY(50px);
-  transition: 1.2s;
-}
-
-.section.show {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 h2 {
   font-family: 'Antic Didone', serif;
-  font-size: 42px;
-  margin-bottom: 30px;
+  font-size: 40px;
+  margin-bottom: 40px;
 }
 
 p {
@@ -94,7 +61,7 @@ p {
   grid-template-columns: repeat(7, 1fr);
   max-width: 320px;
   margin: auto;
-  gap: 10px;
+  gap: 8px;
 }
 
 .day {
@@ -104,17 +71,6 @@ p {
 .highlight {
   border: 2px solid red;
   border-radius: 50%;
-}
-
-/* ТАЙМЕР */
-.timer {
-  margin-top: 40px;
-  font-size: 32px;
-}
-
-.timer span {
-  font-size: 50px;
-  color: white;
 }
 
 /* ТАЙМЕР ФОТО */
@@ -131,12 +87,23 @@ p {
   filter: blur(2px);
 }
 
+/* ТАЙМЕР */
 .timer-overlay {
   position: absolute;
-  top: 55%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
-  text-align: center;
+}
+
+.timer {
+  font-size: 22px;
+  white-space: nowrap;
+  color: white;
+}
+
+.timer span {
+  font-size: 55px;
+  color: white;
 }
 
 /* ДРЕС-КОД */
@@ -145,12 +112,10 @@ p {
   overflow-x: auto;
   gap: 15px;
   padding: 20px;
-  scroll-snap-type: x mandatory;
 }
 
 .slide {
   flex: 0 0 120px;
-  scroll-snap-align: center;
   text-align: center;
 }
 
@@ -161,10 +126,8 @@ p {
   border-radius: 15px;
 }
 
-/* СТРІЛКИ */
 .arrows {
-  font-size: 30px;
-  margin-top: 10px;
+  font-size: 28px;
 }
 
 /* ФІНАЛ */
@@ -172,7 +135,7 @@ p {
   text-align: center;
   font-family: 'Antic Didone';
   font-size: 28px;
-  margin-bottom: 40px;
+  margin: 40px 0;
 }
 
 </style>
@@ -186,7 +149,7 @@ p {
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-content">
+  <div>
     <div class="names">О | А</div>
     <div>Олександр & Аліна</div>
     <div class="player" onclick="playMusic()">▶ Увімкнути музику</div>
@@ -205,20 +168,22 @@ p {
 <!-- КАЛЕНДАР -->
 <div class="section">
 <h2>24 липня 2026</h2>
+
 <div class="calendar">
 <script>
 for(let i=1;i<=31;i++){
-  document.write(`<div class="day ${i==24?'highlight':''}">${i}</div>`)
+document.write(`<div class="day ${i==24?'highlight':''}">${i}</div>`)
 }
 </script>
 </div>
+
 </div>
 
 <!-- ТАЙМІНГ -->
 <div class="section">
 <h2>Таймінг</h2>
 <p>
-12:45 — Вінчання<br><br>
+12:45 — Вінчання<br><br><br>
 14:00 — Святкування
 </p>
 </div>
@@ -242,7 +207,7 @@ for(let i=1;i<=31;i++){
 
 <div class="slider">
   <div class="slide"><img src="black.jpg"><p>Чорний</p></div>
-  <div class="slide"><img src="white.jpg"><p>Білий</p></div>
+  <div class="slide"><img src="milk.jpg"><p>Білий</p></div>
   <div class="slide"><img src="beige.jpg"><p>Бежевий</p></div>
   <div class="slide"><img src="brown.jpg"><p>Коричневий</p></div>
   <div class="slide"><img src="gray.jpg"><p>Сірий</p></div>
@@ -252,12 +217,14 @@ for(let i=1;i<=31;i++){
 
 </div>
 
-<!-- ТАЙМЕР + ФОТО -->
+<!-- ФОТО + ТАЙМЕР -->
 <div class="timer-photo">
 <img src="photo.jpg">
+
 <div class="timer-overlay">
 <div class="timer" id="timer"></div>
 </div>
+
 </div>
 
 <div class="final-text">
@@ -268,36 +235,24 @@ for(let i=1;i<=31;i++){
 
 /* МУЗИКА */
 function playMusic(){
-  document.getElementById('music').play();
+document.getElementById('music').play();
 }
 
 /* ТАЙМЕР */
 function updateTimer(){
-  const wedding = new Date("2026-07-24T00:00:00");
-  const now = new Date();
-  const diff = wedding - now;
+const wedding = new Date("2026-07-24T00:00:00");
+const now = new Date();
+const diff = wedding - now;
 
-  const d = Math.floor(diff / (1000*60*60*24));
-  const h = Math.floor((diff / (1000*60*60)) % 24);
-  const m = Math.floor((diff / (1000*60)) % 60);
+const d = Math.floor(diff / (1000*60*60*24));
+const h = Math.floor((diff / (1000*60*60)) % 24);
+const m = Math.floor((diff / (1000*60)) % 60);
 
-  document.getElementById("timer").innerHTML =
-  `<span>${d}</span> днів ${h} год ${m} хв`;
+document.getElementById("timer").innerHTML =
+`<span>${d}</span> днів ${h} год ${m} хв`;
 }
 
 setInterval(updateTimer,1000);
-
-/* АНІМАЦІЯ */
-const sections = document.querySelectorAll('.section');
-
-window.addEventListener('scroll', () => {
-  sections.forEach(sec => {
-    const top = sec.getBoundingClientRect().top;
-    if(top < window.innerHeight - 100){
-      sec.classList.add('show');
-    }
-  });
-});
 
 </script>
 
