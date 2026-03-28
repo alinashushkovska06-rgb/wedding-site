@@ -42,6 +42,14 @@ body {
 .section {
   padding: 80px 20px;
   text-align: center;
+  opacity: 0;
+  transform: translateY(60px);
+  transition: 1.5s ease;
+}
+
+.section.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 h2 {
@@ -62,6 +70,10 @@ p {
   max-width: 320px;
   margin: auto;
   gap: 8px;
+}
+
+.day-name {
+  font-weight: bold;
 }
 
 .day {
@@ -87,14 +99,17 @@ p {
   filter: blur(2px);
 }
 
-/* ТАЙМЕР */
+/* затемнення */
 .timer-overlay {
   position: absolute;
-  top: 60%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  bottom: 0;
+  width: 100%;
+  padding: 30px 0;
+  background: linear-gradient(transparent, rgba(0,0,0,0.5));
+  text-align: center;
 }
 
+/* ТАЙМЕР */
 .timer {
   font-size: 22px;
   white-space: nowrap;
@@ -126,15 +141,11 @@ p {
   border-radius: 15px;
 }
 
-.arrows {
-  font-size: 28px;
-}
-
 /* ФІНАЛ */
 .final-text {
   text-align: center;
-  font-family: 'Antic Didone';
-  font-size: 28px;
+  font-family: 'Cormorant SC', serif;
+  font-size: 24px;
   margin: 40px 0;
 }
 
@@ -161,7 +172,9 @@ p {
 <h2>Дорогі наші гості</h2>
 <p>
 Кохання зробило нас одним цілим…<br><br>
-Ми запрошуємо вас розділити цей день разом з нами 💍
+І тепер ми робимо наступний крок разом 💍<br><br>
+Ми запрошуємо вас розділити з нами день,<br>
+який назавжди залишиться у наших серцях
 </p>
 </div>
 
@@ -170,6 +183,17 @@ p {
 <h2>24 липня 2026</h2>
 
 <div class="calendar">
+<div class="day-name">Пн</div>
+<div class="day-name">Вт</div>
+<div class="day-name">Ср</div>
+<div class="day-name">Чт</div>
+<div class="day-name">Пт</div>
+<div class="day-name">Сб</div>
+<div class="day-name">Нд</div>
+
+<!-- зсув до середи -->
+<div></div><div></div>
+
 <script>
 for(let i=1;i<=31;i++){
 document.write(`<div class="day ${i==24?'highlight':''}">${i}</div>`)
@@ -213,8 +237,6 @@ document.write(`<div class="day ${i==24?'highlight':''}">${i}</div>`)
   <div class="slide"><img src="gray.jpg"><p>Сірий</p></div>
 </div>
 
-<div class="arrows">← гортай →</div>
-
 </div>
 
 <!-- ФОТО + ТАЙМЕР -->
@@ -228,7 +250,7 @@ document.write(`<div class="day ${i==24?'highlight':''}">${i}</div>`)
 </div>
 
 <div class="final-text">
-Чекаємо на вас з нетерпінням ❤️
+Чекаємо на вас з нетерпінням 🤍
 </div>
 
 <script>
@@ -253,6 +275,17 @@ document.getElementById("timer").innerHTML =
 }
 
 setInterval(updateTimer,1000);
+
+/* АНІМАЦІЯ */
+const sections = document.querySelectorAll('.section');
+
+window.addEventListener('scroll', () => {
+  sections.forEach(sec => {
+    if(sec.getBoundingClientRect().top < window.innerHeight - 100){
+      sec.classList.add('show');
+    }
+  });
+});
 
 </script>
 
