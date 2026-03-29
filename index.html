@@ -289,20 +289,18 @@ a {
   font-size: 22px;
   font-weight: 500;
 }
-
+.timer-photo {
+  position: relative;
+  width: 90%;
+  max-width: 600px;
+  margin: 40px auto;
+}
 
 .timer-photo img.blurred {
   width: 100%;
   border-radius: 20px;
   display: block;
-  filter: brightness(0.6) blur(1.5px); /* затемнення + легкий блюр */
-}
-  
-  .timer-photo {
-  position: relative; /* ОСЬ ЦЕ ФІКСИТЬ ПРОБЛЕМУ */
-  width: 90%;
-  max-width: 500px;
-  margin: 40px auto;
+  filter: brightness(0.6) blur(1.5px);
 }
 
 .timer-overlay {
@@ -311,35 +309,45 @@ a {
   left: 0;
   width: 100%;
   height: 100%;
-  pointer-events: none; /* щоб цифри не перекривали кліки */
-}
-
-.timer-overlay div {
-  position: absolute;
-  color: white;
-  font-family: 'Antic Didone', serif; /* новий шрифт */
-  font-size: 32px; /* МЕНШИЙ розмір */
-  letter-spacing: 1px;
-  text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
-  white-space: nowrap; /* ЗАБОРОНЯЄ перенос рядка */
-}
-
   
-/* розташування цифр на фото */
-.days {
-  top: 12%;
-  left: 8%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.hours {
-  top: 40%;
-  right: 8%;
+/* цифри */
+.timer-numbers {
+  display: flex;
+  gap: 25px;
+  color: white;
+  font-family: 'Antic Didone', serif;
+  font-size: 42px;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
 }
 
-.minutes {
-  bottom: 12%;
-  left: 8%;
+/* підписи */
+.timer-labels {
+  display: flex;
+  gap: 30px;
+  color: white;
+  font-family: 'Antic Didone', serif;
+  font-size: 16px;
+  margin-top: 5px;
+  text-transform: lowercase;
+  letter-spacing: 1px;
 }
+
+/* нижній текст */
+.timer-bottom {
+  margin-top: 25px;
+  color: white;
+  font-family: 'Antic Didone', serif;
+  font-size: 18px;
+  text-align: center;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+}
+
   
 </style>
 </head>
@@ -472,12 +480,32 @@ document.write(`<div class="${i==24?'highlight':''}">${i}</div>`)
 
 <!-- ФОТО + ТАЙМЕР -->
 <div class="timer-photo">
-  <img src="shamp.jpg" class="blurred">
+  <img src="kokt.jpg" class="blurred">
 
- <div class="timer-overlay">
-  <div class="days" id="days">0 днів</div>
-  <div class="hours" id="hours">0 годин</div>
-  <div class="minutes" id="minutes">0 хвилин</div>
+  <div class="timer-overlay">
+    
+    <!-- цифри -->
+    <div class="timer-numbers">
+      <div id="days">0</div>
+      <div id="hours">0</div>
+      <div id="minutes">0</div>
+      <div id="seconds">0</div>
+    </div>
+
+    <!-- підписи -->
+    <div class="timer-labels">
+      <div>днів</div>
+      <div>годин</div>
+      <div>хвилин</div>
+      <div>секунд</div>
+    </div>
+
+    <!-- текст знизу -->
+    <div class="timer-bottom">
+      ... і ми будемо одружені!
+    </div>
+
+  </div>
 </div>
   
 <div class="final-text">
