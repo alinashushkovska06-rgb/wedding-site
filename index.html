@@ -222,49 +222,54 @@ a {
   margin-top: 10px;
   
 }
-/* ВЕЛИКІ КВІТИ ПО БОКАХ */
-.section::before,
-.section::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  width: 220px;
-  height: 100%;
+/* ОДНА КВІТКА НА СЕКЦІЮ */
+.section {
   background-image: url("flowers.PNG");
   background-repeat: no-repeat;
-  background-size: contain;
-  opacity: 0.15;
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* ЛІВО */
-.section::before {
-  left: 0;
+  background-size: cover;
   background-position: left center;
 }
-
-/* ПРАВО */
-.section::after {
-  right: 0;
+  .section:nth-of-type(even) {
   background-position: right center;
-  transform: scaleX(-1);
 }
 
-/* ЧЕРГУВАННЯ */
 .section:nth-of-type(even)::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("flowers.PNG");
+  background-repeat: no-repeat;
+  background-size: cover;
   transform: scaleX(-1);
+  opacity: 0.12;
+  z-index: 0;
+}
+  .section {
+  position: relative;
+  z-index: 1;
 }
 
-.section:nth-of-type(even)::after {
-  transform: scaleX(1);
+.section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("flowers.PNG");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: left center;
+  opacity: 0.12;
+  z-index: 0;
+}
+.gift-box {
+  background: #3e2c23;
+  position: relative;
+  z-index: 2;
 }
 
-/* ВИКЛЮЧЕННЯ ДЛЯ КОРИЧНЕВОГО БЛОКУ */
-.gift-box::before,
-.gift-box::after {
+.gift-box::before {
   display: none;
 }
+  
 </style>
 </head>
 
