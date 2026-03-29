@@ -194,7 +194,16 @@ a {
   color: black;
   text-decoration: none;
 }
-
+  
+.triangle {
+  width: 0;
+  height: 0;
+  border-left: 16px solid black;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  margin-left: 4px;
+}
+  
 </style>
 </head>
 
@@ -219,8 +228,10 @@ a {
 
 <div class="player">
   <div class="play-btn" onclick="playMusic()">
-    <span>▶</span>
-  </div>
+    <div class="play-btn" onclick="playMusic()">
+  <div class="triangle"></div>
+</div>
+    
   <div class="player-text">Увімкніть музику</div>
 </div>
 
