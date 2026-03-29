@@ -13,10 +13,6 @@
 body {
   margin: 0;
   background-color: #f5efe6;
-  background-image: url("coco.png");
-  background-repeat: repeat-y;
-  background-size: 100% auto;
-  background-position: center top;
   color: #3e2c23;
   font-family: 'Cormorant SC', serif;
 }
@@ -24,8 +20,13 @@ body {
   content: "";
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.15);
+  background-image: url("coco.png");
+  background-repeat: repeat-y;
+  background-size: cover;
+  background-position: center top;
+  opacity: 0.12;
   pointer-events: none;
+  z-index: 0;
 }
   /* HERO */
 .hero {
