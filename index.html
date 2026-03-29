@@ -20,53 +20,88 @@ body {
 /* HERO */
 .hero {
   height: 100vh;
-  background: #f5efe6;
+  position: relative;
+}
+
+/* фото */
+.hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ініціали */
+.initials {
+  position: absolute;
+  top: 18%;
+  width: 100%;
+  text-align: center;
+  font-size: 80px;
+  color: black;
+  font-family: 'Forum', serif;
+}
+
+/* імена */
+.names {
+  position: absolute;
+  top: 30%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  font-size: 26px;
+  color: black;
+}
+
+/* щоб рівно під рискою */
+.names span:first-child {
+  text-align: right;
+  width: 130px;
+}
+.names span:last-child {
+  text-align: left;
+  width: 130px;
+}
+
+/* плеєр */
+.player {
+  position: absolute;
+  bottom: 10%;
+  width: 100%;
+  text-align: center;
+}
+
+.play-btn {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 2px solid black;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
-
-  position: relative;
-  overflow: hidden;
-}
-
-.names {
-  font-family: 'Forum', serif;
-  font-size: 60px;
-}
-
-.player {
-  margin-top: 20px;
-  font-size: 18px;
+  margin: auto;
   cursor: pointer;
 }
 
-/* СЕКЦІЇ */
+.play-btn span {
+  font-size: 28px;
+  color: black;
+}
+
+.player-text {
+  margin-top: 12px;
+  font-size: 20px;
+  color: black;
+}
+
+/* секції */
 .section {
-  padding: 50px 20px;
+  padding: 100px 20px;
   text-align: center;
-  opacity: 0;
-  transform: translateY(60px);
-  transition: 1.5s ease;
 }
 
-.section.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-h2 {
-  font-family: 'Antic Didone', serif;
-  font-size: 40px;
-  margin-bottom: 40px;
-}
-
-p {
-  font-size: 22px;
-  line-height: 1.6;
-}
-
-/* КАЛЕНДАР */
+/* календар */
 .calendar {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -79,52 +114,12 @@ p {
   font-weight: bold;
 }
 
-.day {
-  padding: 10px;
-}
-
 .highlight {
   border: 2px solid red;
   border-radius: 50%;
 }
 
-/* ТАЙМЕР ФОТО */
-.timer-photo {
-  margin: 60px auto;
-  width: 90%;
-  max-width: 500px;
-  position: relative;
-}
-
-.timer-photo img {
-  width: 100%;
-  border-radius: 20px;
-  filter: blur(2px);
-}
-
-/* затемнення */
-.timer-overlay {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  padding: 30px 0;
-  background: linear-gradient(transparent, rgba(0,0,0,0.5));
-  text-align: center;
-}
-
-/* ТАЙМЕР */
-.timer {
-  font-size: 22px;
-  white-space: nowrap;
-  color: white;
-}
-
-.timer span {
-  font-size: 55px;
-  color: white;
-}
-
-/* ДРЕС-КОД */
+/* дрес-код */
 .slider {
   display: flex;
   overflow-x: auto;
@@ -143,17 +138,57 @@ p {
   object-fit: cover;
   border-radius: 15px;
 }
+
 .arrows {
   margin-top: 10px;
   font-size: 32px;
-  color: #3e2c23; /* темно-коричневий */
+  color: #3e2c23;
   font-weight: bold;
 }
-  /* ФІНАЛ */
+
+/* РАМКА */
+.gift-box {
+  background: #3e2c23;
+  color: #f5efe6;
+  padding: 30px 20px;
+  border-radius: 20px;
+  margin-top: 40px;
+}
+
+/* таймер */
+.timer-photo {
+  margin: 60px auto;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+}
+
+.timer-photo img {
+  width: 100%;
+  border-radius: 20px;
+}
+
+.timer-overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 30px 0;
+  background: linear-gradient(transparent, rgba(0,0,0,0.5));
+  text-align: center;
+}
+
+.timer {
+  color: white;
+  font-size: 22px;
+}
+
+.timer span {
+  font-size: 55px;
+}
+
 .final-text {
   text-align: center;
-  font-family: 'Cormorant SC', serif;
-  font-size: 24px;
+  font-size: 22px;
   margin: 40px 0;
 }
 
@@ -167,38 +202,27 @@ p {
 </audio>
 
 <!-- HERO -->
-<div class="hero" style="background:url('hero.jpg') center/cover no-repeat; position:relative;"> 
-  <div style="position:relative; width:100%; height:100%;">
+<div class="hero">
 
-    <!-- ІНІЦІАЛИ -->
-    <div style="position:absolute; top:18%; width:100%; text-align:center; font-size:80px; color:#000; font-family:'Forum', serif;">
-      О | А
-    </div>
+<img src="hero.jpg">
 
-    <!-- ІМЕНА -->
-<div style="position:absolute; top:30%; width:100%; text-align:center; font-size:26px; color:#000; display:flex; justify-content:center; gap:10px;">
-  
-  <span style="text-align:right; width:130px;">Олександр</span>
-  
-  <span style="width:20px; text-align:center;">&</span>
-  
-  <span style="text-align:left; width:130px;">Аліна</span>
+<div class="initials">О | А</div>
 
+<div class="names">
+  <span>Олександр</span>
+  <span>&</span>
+  <span>Аліна</span>
 </div>
-    
-    <!-- ПЛЕЄР -->
-  <div style="position:absolute; bottom:10%; width:100%; text-align:center;">
-  <div onclick="playMusic()" style="display:inline-block; cursor:pointer;">
-    
-    <div style="width:60px; height:60px; border-radius:50%; border:2px solid #000; display:flex; align-items:center; justify-content:center;">
-      <div style="width:0; height:0; border-top:10px solid transparent; border-bottom:10px solid transparent; border-left:16px solid black; margin-left:5px;"></div>
-    </div>
 
-    <div style="margin-top:10px; font-size:16px;">Увімкніть музику</div>
-
+<div class="player">
+  <div class="play-btn" onclick="playMusic()">
+    <span>▶</span>
   </div>
+  <div class="player-text">Увімкніть музику</div>
 </div>
-    
+
+</div>
+
 <!-- ТЕКСТ -->
 <div class="section">
 <h2>Дорогі наші гості</h2>
@@ -223,38 +247,14 @@ p {
 <div class="day-name">Сб</div>
 <div class="day-name">Нд</div>
 
-<!-- зсув до середи -->
 <div></div><div></div>
 
 <script>
 for(let i=1;i<=31;i++){
-document.write(`<div class="day ${i==24?'highlight':''}">${i}</div>`)
+document.write(`<div class="${i==24?'highlight':''}">${i}</div>`)
 }
 </script>
 </div>
-
-</div>
-
-<!-- ТАЙМІНГ -->
-<div class="section">
-<h2>Таймінг</h2>
-<p>
-12:45 — Вінчання<br><br>
-14:00 — Святкування
-</p>
-</div>
-
-<!-- ЛОКАЦІЇ -->
-<div class="section">
-<h2>Вінчання</h2>
-<p style="font-size:25px;">Свято-Покровський Катедральний Собор ПЦУ</p>
-<a href="https://maps.app.goo.gl/fWoXVqmHrk8cKWAA8?g_st=ic">Відкрити карту</a>
-</div>
-
-<div class="section">
-<h2>Святкування</h2>
-<p style="font-size:25px;">Ресторан Айвенго, м. Рівне</p>
-<a href="https://maps.app.goo.gl/Ke7kAkdDynt7aTix9?g_st=ic">Відкрити карту</a>
 </div>
 
 <!-- ДРЕС-КОД -->
@@ -268,31 +268,31 @@ document.write(`<div class="day ${i==24?'highlight':''}">${i}</div>`)
   <div class="slide"><img src="brown.jpg"><p>Коричневий</p></div>
   <div class="slide"><img src="gray.jpg"><p>Сірий</p></div>
 </div>
-  
-<div class="arrows">⟵ гортай ⟶</div></div>
-  
-  <div class="section" style="border:2px solid #3e2c23; border-radius:20px; padding:30px; margin:30px 20px;">
-  
-  <h2 style="color:white;">Шановні гості!</h2>
 
-  <p style="color:#e8dfcf;">
-  Ми безмежно раді розділити з вами один із найважливіших днів у нашому житті 🤍<br><br>
-  
-  Щоб свято залишилось із нами не лише у спогадах, маємо до вас маленьке прохання:<br>
-  замість квітів, які швидко втрачають свою красу, подаруйте нам пляшечку алкогольного напою 🍷<br><br>
-  
-  Ми обіцяємо відкривати їх у теплі моменти та з усмішкою згадувати кожного з вас 🥂
-  </p>
+<div class="arrows">⟵ гортай ⟶</div>
 
 </div>
-<!-- ФОТО + ТАЙМЕР -->
+
+<!-- РАМКА -->
+<div class="section">
+  <div class="gift-box">
+    <h2 style="color:white;">Шановні гості!</h2>
+    <p>
+    Ми безмежно раді розділити з вами один із найважливіших днів у нашому житті 🤍<br><br>
+    Щоб свято залишилось із нами не лише у спогадах, маємо до вас маленьке прохання:<br>
+    замість квітів подаруйте нам пляшечку алкогольного напою 🍷<br><br>
+    Ми обіцяємо відкривати їх і згадувати вас 🥂
+    </p>
+  </div>
+</div>
+
+<!-- ТАЙМЕР -->
 <div class="timer-photo">
 <img src="proposal.jpg">
 
 <div class="timer-overlay">
 <div class="timer" id="timer"></div>
 </div>
-
 </div>
 
 <div class="final-text">
@@ -301,12 +301,10 @@ document.write(`<div class="day ${i==24?'highlight':''}">${i}</div>`)
 
 <script>
 
-/* МУЗИКА */
 function playMusic(){
 document.getElementById('music').play();
 }
 
-/* ТАЙМЕР */
 function updateTimer(){
 const wedding = new Date("2026-07-24T00:00:00");
 const now = new Date();
@@ -321,17 +319,6 @@ document.getElementById("timer").innerHTML =
 }
 
 setInterval(updateTimer,1000);
-
-/* АНІМАЦІЯ */
-const sections = document.querySelectorAll('.section');
-
-window.addEventListener('scroll', () => {
-  sections.forEach(sec => {
-    if(sec.getBoundingClientRect().top < window.innerHeight - 100){
-      sec.classList.add('show');
-    }
-  });
-});
 
 </script>
 
