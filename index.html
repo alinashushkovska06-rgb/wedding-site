@@ -274,6 +274,29 @@ a {
   position: absolute;
   z-index: 5;
 }
+  .timeline {
+  margin-top: 25px;
+}
+
+.time-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 18px 0;
+}
+
+.time-icon {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  opacity: 0.6;
+}
+
+.time-text {
+  font-size: 22px;
+  font-weight: 500;
+}
 </style>
 </head>
 
@@ -344,10 +367,19 @@ document.write(`<div class="${i==24?'highlight':''}">${i}</div>`)
   <!-- ТАЙМІНГ -->
 <div class="section">
 <h2>Таймінг</h2>
-<p>
-12:45 — Вінчання<br><br>
-14:00 — Святкування
-</p>
+
+<div class="timeline">
+
+  <div class="time-row">
+    <img src="church.png" class="time-icon">
+    <span class="time-text">12:45 — Вінчання</span>
+  </div>
+
+  <div class="time-row">
+    <img src="IMG_0152.png" class="time-icon">
+    <span class="time-text">14:00 — Святкування</span>
+  </div>
+
 </div>
   <div class="divider">✧</div>
   
