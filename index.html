@@ -110,7 +110,8 @@ body {
   text-align: center;
   position: relative;
   z-index: 2;
-
+  overflow: hidden;
+  
   opacity: 0;
   transform: translateY(40px);
   transition: 1.5s ease;
@@ -220,7 +221,23 @@ a {
   display: inline-block;
   margin-top: 10px;
 }
-  
+  /* ВІЗЕРУНОК */
+.section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("flowers.PNG");
+  background-repeat: repeat;
+  background-size: 120px;
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ПЕРЕВЕРНУТИЙ */
+.section:nth-of-type(even)::before {
+  transform: scaleX(-1);
+}
 </style>
 </head>
 
