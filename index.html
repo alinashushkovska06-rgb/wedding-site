@@ -15,6 +15,8 @@ body {
   background-color: #f5efe6;
   color: #3e2c23;
   font-family: 'Cormorant SC', serif;
+  position: relative;
+  z-index: 1;
 }
   body::before {
   content: "";
@@ -26,7 +28,7 @@ body {
   background-position: center top;
   opacity: 0.12;
   pointer-events: none;
-  z-index: 0;
+  z-index: -1;
 }
   /* HERO */
 .hero {
