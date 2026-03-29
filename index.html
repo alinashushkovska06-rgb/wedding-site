@@ -220,23 +220,50 @@ a {
   border-radius: 20px;
   display: inline-block;
   margin-top: 10px;
+  
 }
-  /* ВІЗЕРУНОК */
-.section::before {
+/* ВЕЛИКІ КВІТИ ПО БОКАХ */
+.section::before,
+.section::after {
   content: "";
   position: absolute;
-  inset: 0;
+  top: 0;
+  width: 220px;
+  height: 100%;
   background-image: url("flowers.PNG");
-  background-repeat: repeat;
-  background-size: 120px;
-  opacity: 0.05;
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.15;
   pointer-events: none;
   z-index: 0;
 }
 
-/* ПЕРЕВЕРНУТИЙ */
+/* ЛІВО */
+.section::before {
+  left: 0;
+  background-position: left center;
+}
+
+/* ПРАВО */
+.section::after {
+  right: 0;
+  background-position: right center;
+  transform: scaleX(-1);
+}
+
+/* ЧЕРГУВАННЯ */
 .section:nth-of-type(even)::before {
   transform: scaleX(-1);
+}
+
+.section:nth-of-type(even)::after {
+  transform: scaleX(1);
+}
+
+/* ВИКЛЮЧЕННЯ ДЛЯ КОРИЧНЕВОГО БЛОКУ */
+.gift-box::before,
+.gift-box::after {
+  display: none;
 }
 </style>
 </head>
