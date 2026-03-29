@@ -34,7 +34,7 @@ body {
 .hero {
   height: 100vh;
   position: relative;
-  z-index: hidden;
+  z-index: 2;
 }
 
 .hero img {
@@ -58,7 +58,7 @@ body {
 /* імена */
 .names {
   position: absolute;
-  top: 30%;
+  top: 34%;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -68,20 +68,19 @@ body {
 }
 
 .names .left {
-  width: 180px;
+  width: 140px;
   text-align: right;
 }
 
 .names .right {
-  width: 180px;
+  width: 140px;
   text-align: left;
 }
 
 .names .and {
-  width: 30px;
+  width: 40px;
   text-align: center;
-  position: relative;
-  top: -2px;
+  
 }
   /* плеєр */
 .player {
@@ -345,8 +344,9 @@ a {
 }
 /* === АНІМАЦІЯ СЕКЦІЙ === */
 .section {
-  opacity: 1;
-  transform: none;
+  opacity: 0;
+  transform: translateY(60px) scale(0.98);
+  transition: 1.2s ease;
   
 }
 
@@ -418,17 +418,6 @@ html {
 </style>
 </head>
   
-<script>
-const sections = document.querySelectorAll('.section');
-
-window.addEventListener('scroll', () => {
-  sections.forEach(sec => {
-    if(sec.getBoundingClientRect().top < window.innerHeight - 100){
-      sec.classList.add('show');
-    }
-  });
-});
-</script>
   
   <body>
 
