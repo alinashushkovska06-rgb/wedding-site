@@ -210,16 +210,6 @@ body {
   border-radius: 20px;
 }
 
-.timer {
-  margin-top: 20px;
-  font-size: 22px;
-  color: black;
-}
-
-.timer span {
-  font-size: 50px;
-  color: black;
-}
 
 /* фінал */
 .final-text {
@@ -299,46 +289,37 @@ a {
   font-size: 22px;
   font-weight: 500;
 }
-  /* фото з заблюренням */
+
+
 .timer-photo img.blurred {
   width: 100%;
   border-radius: 20px;
   display: block;
-  filter: brightness(0.6) blur(2px); /* затемнення + легкий блюр */
+  filter: brightness(0.6) blur(1.5px); /* затемнення + легкий блюр */
 }
 
-/* overlay для таймера */
 .timer-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  pointer-events: none;
+  pointer-events: none; /* щоб цифри не перекривали кліки */
 }
 
-/* кожен блок таймера */
-.time-block {
+.timer-overlay div {
   position: absolute;
-  background: rgba(255,255,255,0.5); /* прозорий фон */
-  padding: 12px 18px;
-  border-radius: 15px;
-  text-align: center;
+  color: white;
   font-family: 'Cormorant SC', serif;
-  font-weight: 600;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  font-weight: 700;
+  font-size: 60px; /* великі цифри */
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
 }
 
-.time-block span {
-  display: block;
-  font-size: 36px;
-  color: #3e2c23;
-}
-
-/* розкидані позиції */
+/* розташування цифр на фото */
 .days {
   top: 10%;
-  left: 15%;
+  left: 5%;
 }
 
 .hours {
@@ -347,8 +328,8 @@ a {
 }
 
 .minutes {
-  top: 70%;
-  left: 25%;
+  bottom: 10%;
+  right: 5%;
 }
   
 </style>
@@ -483,23 +464,14 @@ document.write(`<div class="${i==24?'highlight':''}">${i}</div>`)
 <!-- ФОТО + ТАЙМЕР -->
 <div class="timer-photo">
   <img src="shamp.jpg" class="blurred">
-  
+
   <div class="timer-overlay">
-    <div class="time-block days">
-      <span id="days">0</span>
-      <div>Днів</div>
-    </div>
-    <div class="time-block hours">
-      <span id="hours">0</span>
-      <div>Годин</div>
-    </div>
-    <div class="time-block minutes">
-      <span id="minutes">0</span>
-      <div>Хвилин</div>
-    </div>
+    <div class="days" id="days">0 Днів</div>
+    <div class="hours" id="hours">0 Годин</div>
+    <div class="minutes" id="minutes">0 Хвилин</div>
   </div>
 </div>
-
+  
 <div class="final-text">
 Чекаємо на вас з нетерпінням 🤍
 </div>
@@ -519,10 +491,10 @@ const d = Math.floor(diff / (1000*60*60*24));
 const h = Math.floor((diff / (1000*60*60)) % 24);
 const m = Math.floor((diff / (1000*60)) % 60);
 
-document.getElementById("days").innerText = d;
-document.getElementById("hours").innerText = h;
-document.getElementById("minutes").innerText = m;
-
+document.getElementById("days").innerText = `${d} Днів`;
+document.getElementById("hours").innerText = `${h} Годин`;
+document.getElementById("minutes").innerText = `${m} Хвилин`;
+  
 }
 
 setInterval(updateTimer,1000);
