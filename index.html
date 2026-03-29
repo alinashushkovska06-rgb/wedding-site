@@ -127,15 +127,6 @@ body {
   position: relative;
   z-index: 2;
   overflow: hidden;
-  
-  opacity: 0;
-  transform: translateY(40px);
-  transition: 1.5s ease;
-}
-
-.section.show {
-  opacity: 1;
-  transform: translateY(0);
 }
   
 /* календар */
@@ -353,11 +344,98 @@ a {
   font-size: 22px;
   text-align: center;
 }
+/* === АНІМАЦІЯ СЕКЦІЙ === */
+.section {
+  opacity: 0;
+  transform: translateY(60px) scale(0.98);
+  transition: 1.2s ease;
+}
+
+.section.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* === ПЛАВНІСТЬ ВСЬОГО === */
+* {
+  transition: all 0.3s ease;
+}
+
+/* === HOVER ДЛЯ ФОТО === */
+img {
+  transition: transform 0.5s ease;
+}
+
+img:hover {
+  transform: scale(1.03);
+}
+
+/* === КНОПКИ === */
+a {
+  transition: 0.3s;
+}
+
+a:hover {
+  background: #3e2c23;
+  color: #f5efe6;
+}
+
+/* === ПЛАВНИЙ СКРОЛ === */
+html {
+  scroll-behavior: smooth;
+}
+
+/* === АДАПТАЦІЯ ПІД ТЕЛЕФОН === */
+@media (max-width: 600px) {
+
+  .initials {
+    font-size: 50px;
+  }
+
+  .names {
+    font-size: 18px;
+  }
+
+  .time-text {
+    font-size: 18px;
+  }
+
+  .time-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .timer-numbers {
+    font-size: 38px;
+    gap: 10px;
+  }
+
+  .timer-labels {
+    font-size: 13px;
+  }
+
+  .section {
+    padding: 40px 15px;
+  }
+
+}
 
 </style>
 </head>
+  
+<script>
+const sections = document.querySelectorAll('.section');
 
-<body>
+window.addEventListener('scroll', () => {
+  sections.forEach(sec => {
+    if(sec.getBoundingClientRect().top < window.innerHeight - 100){
+      sec.classList.add('show');
+    }
+  });
+});
+</script>
+  
+  <body>
 
 <audio id="music" loop>
   <source src="music.mp3" type="audio/mpeg">
