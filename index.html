@@ -293,18 +293,19 @@ a {
   justify-content: center;
   gap: 14px;
 }
+
   .timer-photo {
   position: relative;
-  width: 90%;
-  max-width: 600px;
-  margin: 40px auto;
+  width: 100%;
+  margin: 0;
 }
 
-.timer-photo img.blurred {
+.timer-bg {
   width: 100%;
-  border-radius: 20px;
+  height: 420px;
+  object-fit: cover;
   display: block;
-  filter: brightness(0.6) blur(1.5px);
+  filter: brightness(0.6); /* затемнення */
 }
 
 .timer-overlay {
@@ -313,46 +314,43 @@ a {
   left: 0;
   width: 100%;
   height: 100%;
-  
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: white;
 }
 
-/* цифри */
+/* ЦИФРИ */
 .timer-numbers {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 25px;
-  color: white;
-  font-family: 'Antic Didone', serif;
-  font-size: 42px;
-  text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+  font-size: 38px;
+  font-weight: 600;
+  width: 80%;
+  text-align: center;
 }
 
-/* підписи */
+/* ПІДПИСИ */
 .timer-labels {
-  display: flex;
-  gap: 30px;
-  color: white;
-  font-family: 'Antic Didone', serif;
-  font-size: 16px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  font-size: 14px;
   margin-top: 5px;
-  text-transform: lowercase;
-  letter-spacing: 1px;
+  width: 80%;
+  text-align: center;
+  opacity: 0.8;
 }
 
-/* нижній текст */
-.timer-bottom {
+/* ТЕКСТ ВНИЗУ */
+.timer-text {
   margin-top: 25px;
-  color: white;
-  font-family: 'Antic Didone', serif;
   font-size: 18px;
   text-align: center;
-  text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
 }
 
-  
 </style>
 </head>
 
@@ -482,33 +480,32 @@ document.write(`<div class="${i==24?'highlight':''}">${i}</div>`)
 
 <!-- ФОТО + ТАЙМЕР -->
 <div class="timer-photo">
-  <img src="kokt.jpg" class="blurred">
+
+  <img src="kokt.jpg" class="timer-bg">
 
   <div class="timer-overlay">
-    
-    <!-- цифри -->
+
     <div class="timer-numbers">
-      <div id="days">0</div>
-      <div id="hours">0</div>
-      <div id="minutes">0</div>
-      <div id="seconds">0</div>
+      <span id="days">116</span>
+      <span id="hours">7</span>
+      <span id="minutes">23</span>
+      <span id="seconds">45</span>
     </div>
 
-    <!-- підписи -->
     <div class="timer-labels">
-      <div>днів</div>
-      <div>годин</div>
-      <div>хвилин</div>
-      <div>секунд</div>
+      <span>днів</span>
+      <span>год</span>
+      <span>хв</span>
+      <span>сек</span>
     </div>
 
-    <!-- текст знизу -->
-    <div class="timer-bottom">
-      ... і ми будемо одружені!
+    <div class="timer-text">
+      ...і ми станемо одруженими 🤍
     </div>
 
   </div>
 </div>
+
   
 <div class="final-text">
 Чекаємо на вас з нетерпінням 🤍
@@ -528,13 +525,14 @@ const diff = wedding - now;
 const d = Math.floor(diff / (1000*60*60*24));
 const h = Math.floor((diff / (1000*60*60)) % 24);
 const m = Math.floor((diff / (1000*60)) % 60);
+const s = Math.floor((diff / 1000) % 60);
 
-document.getElementById("days").innerText = d + " днів";
-document.getElementById("hours").innerText = h + " годин";
-document.getElementById("minutes").innerText = m + " хвилин";
-  
+document.getElementById("days").innerText = d;
+document.getElementById("hours").innerText = h;
+document.getElementById("minutes").innerText = m;
+document.getElementById("seconds").innerText = s;
 }
-
+  
 setInterval(updateTimer,1000);
 
 </script>
