@@ -52,22 +52,23 @@ body {
   color: black;
 }
 
-.names span:first-child {
+.names .left {
+  width: 160px;
   text-align: right;
-  width: 140px;
 }
 
-.names span:last-child {
+.names .right {
+  width: 160px;
   text-align: left;
-  width: 140px;
 }
 
 .names .and {
+  width: 30px;
+  text-align: center;
   position: relative;
   top: -2px;
 }
-
-/* плеєр */
+  /* плеєр */
 .player {
   position: absolute;
   bottom: 12%;
@@ -109,8 +110,17 @@ body {
   text-align: center;
   position: relative;
   z-index: 2;
+
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 1.5s ease;
 }
 
+.section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+  
 /* календар */
 .calendar {
   display: grid;
@@ -204,8 +214,13 @@ body {
 a {
   color: black;
   text-decoration: none;
+  border: 1px solid #3e2c23;
+  padding: 8px 16px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-top: 10px;
 }
-
+  
 </style>
 </head>
 
@@ -223,11 +238,11 @@ a {
 <div class="initials">О | А</div>
 
 <div class="names">
-  <span>Олександр</span>
+  <span class="left">Олександр</span>
   <span class="and">&</span>
-  <span>Аліна</span>
+  <span class="right">Аліна</span>
 </div>
-
+  
 <div class="player">
   <div class="play-btn" onclick="playMusic()">
     <div class="triangle"></div>
@@ -353,6 +368,17 @@ document.getElementById("timer").innerHTML =
 setInterval(updateTimer,1000);
 
 </script>
+<script>
+const sections = document.querySelectorAll('.section');
 
+window.addEventListener('scroll', () => {
+  sections.forEach(sec => {
+    if(sec.getBoundingClientRect().top < window.innerHeight - 100){
+      sec.classList.add('show');
+    }
+  });
+});
+  
+</script>
 </body>
 </html>
