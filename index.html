@@ -12,11 +12,12 @@
 
 body {
   margin: 0;
-  background: #f5efe6;
+  background: #f5efe6 url("flowers.PNG") no-repeat center top;
+  background-size: cover;
   color: #3e2c23;
   font-family: 'Cormorant SC', serif;
 }
-
+  
 /* HERO */
 .hero {
   height: 100vh;
@@ -222,44 +223,7 @@ a {
   margin-top: 10px;
   
 }
-/* ОДНА КВІТКА НА СЕКЦІЮ */
-.section {
-  background-image: url("flowers.PNG");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: left center;
-}
-  .section:nth-of-type(even) {
-  background-position: right center;
-}
 
-.section:nth-of-type(even)::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: url("flowers.PNG");
-  background-repeat: no-repeat;
-  background-size: cover;
-  transform: scaleX(-1);
-  opacity: 0.12;
-  z-index: 0;
-}
-  .section {
-  position: relative;
-  z-index: 1;
-}
-
-.section::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: url("flowers.PNG");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: left center;
-  opacity: 0.12;
-  z-index: 0;
-}
 .gift-box {
   background: #3e2c23;
   position: relative;
@@ -269,7 +233,9 @@ a {
 .gift-box::before {
   display: none;
 }
-  
+  .section {
+  background: transparent;
+}
 </style>
 </head>
 
