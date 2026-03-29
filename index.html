@@ -15,13 +15,19 @@ body {
   background-color: #f5efe6;
   background-image: url("coco.png");
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100% auto;
   background-position: center top;
   color: #3e2c23;
   font-family: 'Cormorant SC', serif;
 }
-  
-/* HERO */
+  body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.15);
+  pointer-events: none;
+}
+  /* HERO */
 .hero {
   height: 100vh;
   position: relative;
