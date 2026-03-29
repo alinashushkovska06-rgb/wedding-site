@@ -298,7 +298,8 @@ a {
   position: relative;
   width: 100%;
   margin: 0;
-  border-radius: 0;
+  border-radius: 0 !important;
+  overflow: hidden;
 }
 
 .timer-bg {
@@ -306,7 +307,8 @@ a {
   height: 550px;
   object-fit: cover;
   display: block;
-  filter: brightness(0.6); /* затемнення */
+  filter: brightness(0.6); 
+  border-radius: 0 !important; /* затемнення */
 }
 
 .timer-overlay {
