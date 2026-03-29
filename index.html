@@ -317,26 +317,28 @@ a {
 .timer-overlay div {
   position: absolute;
   color: white;
-  font-family: 'Cormorant SC', serif;
-  font-weight: 700;
-  font-size: 60px; /* великі цифри */
+  font-family: 'Antic Didone', serif; /* новий шрифт */
+  font-size: 32px; /* МЕНШИЙ розмір */
+  letter-spacing: 1px;
   text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+  white-space: nowrap; /* ЗАБОРОНЯЄ перенос рядка */
 }
 
+  
 /* розташування цифр на фото */
 .days {
-  top: 10%;
-  left: 5%;
+  top: 12%;
+  left: 8%;
 }
 
 .hours {
   top: 40%;
-  left: 55%;
+  right: 8%;
 }
 
 .minutes {
-  bottom: 10%;
-  right: 5%;
+  bottom: 12%;
+  left: 8%;
 }
   
 </style>
@@ -472,11 +474,10 @@ document.write(`<div class="${i==24?'highlight':''}">${i}</div>`)
 <div class="timer-photo">
   <img src="shamp.jpg" class="blurred">
 
-  <div class="timer-overlay">
-    <div class="days" id="days">0 Днів</div>
-    <div class="hours" id="hours">0 Годин</div>
-    <div class="minutes" id="minutes">0 Хвилин</div>
-  </div>
+ <div class="timer-overlay">
+  <div class="days" id="days">0 днів</div>
+  <div class="hours" id="hours">0 годин</div>
+  <div class="minutes" id="minutes">0 хвилин</div>
 </div>
   
 <div class="final-text">
@@ -498,9 +499,9 @@ const d = Math.floor(diff / (1000*60*60*24));
 const h = Math.floor((diff / (1000*60*60)) % 24);
 const m = Math.floor((diff / (1000*60)) % 60);
 
-document.getElementById("days").innerText = `${d} Днів`;
-document.getElementById("hours").innerText = `${h} Годин`;
-document.getElementById("minutes").innerText = `${m} Хвилин`;
+document.getElementById("days").innerText = d + " днів";
+document.getElementById("hours").innerText = h + " годин";
+document.getElementById("minutes").innerText = m + " хвилин";
   
 }
 
