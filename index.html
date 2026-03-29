@@ -249,6 +249,23 @@ a {
   .section {
   background: transparent;
 }
+  .divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 40px 0;
+  color: #b8a89c;
+  font-size: 18px;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #d8cfc6;
+  margin: 0 15px;
+}
 </style>
 </head>
 
@@ -277,7 +294,8 @@ a {
   </div>
   <div class="player-text">Увімкніть музику</div>
 </div>
-
+<div class="divider">✧</div>
+  
 </div>
 
 <!-- ТЕКСТ -->
@@ -322,21 +340,24 @@ document.write(`<div class="${i==24?'highlight':''}">${i}</div>`)
 14:00 — Святкування
 </p>
 </div>
-
+  <div class="divider">✧</div>
+  
 <!-- ЛОКАЦІЇ -->
 <div class="section">
 <h2>Вінчання</h2>
 <p style="font-size:25px;">Свято-Покровський Катедральний Собор ПЦУ</p>
 <a href="https://maps.app.goo.gl/fWoXVqmHrk8cKWAA8?g_st=ic">Відкрити карту</a>
 </div>
+<div class="divider">✧</div>
 
 <div class="section">
 <h2>Святкування</h2>
 <p style="font-size:25px;">Ресторан Айвенго, м. Рівне</p>
 <a href="https://maps.app.goo.gl/Ke7kAkdDynt7aTix9?g_st=ic">Відкрити карту</a>
 </div>
-
-<!-- ДРЕС-КОД -->
+<div class="divider">✧</div>
+  
+  <!-- ДРЕС-КОД -->
 <div class="section">
 <h2>Дрес-код</h2>
 
